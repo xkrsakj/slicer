@@ -1,0 +1,111 @@
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+body {
+    background: linear-gradient(90deg, rgba(11, 13, 17, 1) 0%, rgb(16, 23, 27) 44%, rgb(16, 23, 27) 63%, rgba(11, 13, 17, 1) 100%);
+    font-family: sans-serif;
+    color: white;
+}
+
+.acceleration-wrapper {
+    width: 200px;
+    margin: 0 auto;
+}
+
+.btns {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+button {
+    background: transparent;
+
+    border: 1px solid rgb(31, 31, 31);
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 20px 0px #000;
+
+    padding: 5px 10px;
+
+    text-transform: uppercase;
+    color: #b4b4b4;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+button {
+    opacity: 1;
+
+    transition: all 0.2s linear;
+}
+
+button:hover:not(:disabled) {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+button:active:not(:disabled) {
+    cursor: pointer;
+
+    box-shadow:
+        0px 0px 6px 2px #000,
+        inset 0px 0px 6px 2px #000;
+}
+
+button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.fields {
+    position: relative;
+    width: 200px;
+    margin: 40px 19% 50px auto;
+}
+
+.field {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+
+    text-transform: uppercase;
+
+    margin: 7px 0;
+}
+
+.field p {
+    font-weight: 400;
+    font-size: 14.3px;
+    color: #808080;
+
+    margin: 0;
+}
+
+.field input {
+    background: none;
+    /* border: 1px solid #808080; */
+    border: none;
+    border-radius: 5px;
+    width: 26px;
+    text-align: center;
+
+    margin: 0 5px;
+
+    /* color: #808080; */
+    color: rgb(93, 255, 252);
+    font-weight: bold;
+}

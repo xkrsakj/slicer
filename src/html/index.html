@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slicer 1.0</title>
+
+    <link rel="stylesheet" href="../css/index.css">
+    <script defer src="../js/index.js"></script>
+</head>
+<body>
+    <div id="main">
+        <header>
+            <div id="multi-btn">
+                <button id="upload-btn">
+                    <img src="../../assets/icons/upload.svg">
+                    <p>Upload</p>
+                </button>
+                <span></span>
+                <button id="settings-btn">
+                    <img width="18" src="../../assets/icons/gear.svg">
+                    <p>Settings</p>
+                </button>
+            </div>
+
+            <div class="control-btns">
+                <button id="play-btn">
+                    <img width="40" src="../../assets/icons/play.svg">
+                </button>
+                <span></span>
+                <button id="pause-btn">
+                    <img width="40" src="../../assets/icons/pause.svg">
+                </button>
+                <span></span>
+                <button id="stop-btn">
+                    <img width="40" src="../../assets/icons/stop.svg">
+                </button>
+            </div>
+
+            <div id="right-panel">
+                <div id="connection" class="connection off">
+                    <span></span>
+                    OFFLINE
+                </div>
+                <span></span>
+                <button id="info-btn">
+                    <img width="35" src="../../assets/icons/info.svg">
+                </button>
+            </div>
+        </header>
+        <main>
+            <div id="img-area">
+                <img width="200" src="">
+            </div>
+            <div id="status">
+                <ul>
+                    <li id="robot-state">idle<span id="percent"></span></li>
+                    <li><span id="completed-strokes">0</span> / <span id="total-strokes">0</span> strokes</li>
+                    <li>~<span id="remaining-time">0</span>min remaining</li>
+                </ul>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <svg class="svg-def">
+    <defs>
+        <filter id="strokeGlow" y="0" x="0" width="250" height="150">
+
+        <feOffset in="StrokePaint" dx="0" dy="0" result="centeredOffset"></feOffset>
+
+        <feGaussianBlur in="centeredOffset" stdDeviation="3" result="blur1"></feGaussianBlur>
+        <!-- <feGaussianBlur in="centeredOffset" stdDeviation="5" result="blur2"></feGaussianBlur> -->
+        <!-- <feGaussianBlur in="centeredOffset" stdDeviation="2" result="blur3"></feGaussianBlur> -->
+
+        <feMerge>
+            <feMergeNode in="blur1"></feMergeNode>
+            <!-- <feMergeNode in="blur2"></feMergeNode> -->
+            <!-- <feMergeNode in="blur3"></feMergeNode> -->
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+        </filter>
+    </defs>
+    </svg>
+</body>
+</html>

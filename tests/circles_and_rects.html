@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Canvas tutorial</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas style="image-rendering: pixelated;" id="canvas" width="500" height="500"></canvas>
+    <script>
+        function draw() {
+            const canvas = document.getElementById("canvas");
+            const ctx = canvas.getContext("2d");
+            ctx.translate(0.5, 0.5);
+
+            // circle
+            ctx.arc(200, 200, 50, 0, 2 * Math.PI);
+
+            var res = 100
+            var a = 1
+            var r = 50
+            var theta = r/a
+
+            for (let i = res; i >= 0; i--) {
+                var ang = theta/res*i
+                
+                var x = a*ang*Math.cos(ang);
+                var y = a*ang*Math.sin(ang);
+
+                ctx.lineTo(200+x, 200+y)
+            }
+            ctx.stroke();
+
+            // rect
+
+            ctx.beginPath();
+
+            var pointsX = [0, 300, 300, 200, 20, 0];
+            var pointsY = [400, 400, 100, 200, 100, 400];
+            var A = 0;
+            var Cx = 0;
+            var Cy = 0;
+
+            for (let i = 0; i < pointsX.length; i++) {
+                ctx.lineTo(pointsX[i], pointsY[i])
+            }
+
+            // for (let y = 100+5; y < 400; y+=5) {
+            //     ctx.moveTo(0, y);
+            //     ctx.lineTo(500, y);
+
+            //     for (let i = 0; i < pointsX.length; i++) {
+            //         var collision = line_to_line(pointsX[i], pointsY[i], pointsX[(i+1) % pointsX.length], pointsY[(i+1) % pointsX.length], 0, y, 500, y);
+
+            //         if (collision) {
+            //             ctx.fillStyle = "red";
+            //             ctx.fillRect(collision[0],collision[1],3,3);
+            //         }
+            //     }
+            // }
+
+            for (let i = 0; i < pointsX.length-1; i++) {
+                A += pointsX[i]*pointsY[i+1] - pointsX[i+1]*pointsY[i];
+            }
+
+            A *= 0.5;
+
+            for (let i = 0; i < pointsX.length-1; i++) {
+                Cx += (pointsX[i] + pointsX[i+1])*(pointsX[i]*pointsY[i+1] - pointsX[i+1]*pointsY[i])
+                Cy += (pointsY[i] + pointsY[i+1])*(pointsX[i]*pointsY[i+1] - pointsX[i+1]*pointsY[i])
+            }
+
+            Cx *= 1/(6*A);
+            Cy *= 1/(6*A);
+
+            console.log(Cx, Cy);
+
+            const pen = 100.0;
+            let Rmax = 0;
+
+            for (let i = 0; i < pointsX.length; i++) {
+                const dx = pointsX[i] - Cx;
+                const dy = pointsY[i] - Cy;
+                const r = Math.hypot(dx, dy);
+                if (r > Rmax) Rmax = r;
+            }
+
+            const scaleStep = 1 - pen / Rmax;
+
+            console.log(scaleStep);
+            
+
+            for (let s = 1; s > 0; s *= scaleStep) {
+                for (let j = 0; j < pointsX.length; j++) {
+                    x = (pointsX[j] - Cx) * s + Cx;
+                    y = (pointsY[j] - Cy) * s + Cy;
+                    // gcode += ...
+                    ctx.lineTo(x, y);
+                }
+            }
+            
+            // for (let i = 1; i >= 0; i-=0.1) {
+            //     for (let j = 0; j < pointsX.length; j++) {
+            //         ctx.lineTo((pointsX[j] - Cx)*i + Cx, (pointsY[j] - Cy)*i + Cy);
+            //     }
+            // }
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        function line_to_line(x1, y1, x2, y2, x3, y3, x4, y4) {
+            var uA = ((x4-x3)*(y1-y3) - (y4-y3)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+            var uB = ((x2-x1)*(y1-y3) - (y2-y1)*(x1-x3)) / ((y4-y3)*(x2-x1) - (x4-x3)*(y2-y1));
+
+            if (uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1) {
+                var intersectionX = x1 + (uA * (x2-x1));
+                var intersectionY = y1 + (uA * (y2-y1));
+
+                return [intersectionX, intersectionY];
+            }
+
+            return false;
+        }
+
+        draw();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+body {
+    /* background: linear-gradient(90deg,rgba(11, 13, 17, 1) 0%, rgb(14, 19, 23) 50%, rgba(11, 13, 17, 1) 100%); */
+    background: linear-gradient(90deg, rgba(11, 13, 17, 1) 0%, rgb(16, 23, 27) 44%, rgb(16, 23, 27) 63%, rgba(11, 13, 17, 1) 100%);
+    /* background: #050609; */
+    font-family: sans-serif;
+    color: white;
+}
+
+.wrapper {
+    width: 200px;
+    margin: 40px auto;
+    text-align: center;
+}
+
+p {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 14.3px;
+    color: #808080;
+
+    margin: 3px;
+}
+
+.special {
+    color: rgb(93, 255, 252);
+}
+
+a {
+    text-decoration: underline;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.author {
+    text-transform: capitalize;
+    font-style: italic;
+    font-size: 12px;
+}
+
+button {
+    background: transparent;
+    /* background: linear-gradient(90deg,rgba(11, 13, 17, 1) 0%, rgba(23, 33, 39, 1) 44%, rgba(23, 33, 39, 1) 63%, rgba(11, 13, 17, 1) 100%); */
+
+    border: 1px solid rgb(31, 31, 31);
+    border-radius: 10px;
+
+    box-shadow: 0px 0px 20px 0px #000;
+
+    padding: 5px 10px;
+
+    text-transform: uppercase;
+    color: #b4b4b4;
+    font-size: 13px;
+    font-weight: 600;
+
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+button {
+    opacity: 1;
+
+    transition: all 0.2s linear;
+}
+
+button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+
+    /* box-shadow: inset 0px 0px 6px 2px #000; */
+}
+
+button:active {
+    /* opacity: 0.5; */
+    cursor: pointer;
+
+    box-shadow:
+        0px 0px 6px 2px #000,
+        inset 0px 0px 6px 2px #000;
+}

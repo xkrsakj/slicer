@@ -1,0 +1,30 @@
+{
+  "name": "pilak-slicer",
+  "version": "1.0.0",
+  "description": "Official light-weight slicer for kreslic.",
+  "main": "src/js/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "author": "Jakub Krsak",
+  "license": "MIT",
+  "devDependencies": {
+    "@electron-forge/cli": "^7.10.2",
+    "@electron-forge/maker-deb": "^7.10.2",
+    "@electron-forge/maker-rpm": "^7.10.2",
+    "@electron-forge/maker-squirrel": "^7.10.2",
+    "@electron-forge/maker-zip": "^7.10.2",
+    "@electron-forge/plugin-auto-unpack-natives": "^7.10.2",
+    "@electron-forge/plugin-fuses": "^7.10.2",
+    "@electron/fuses": "^1.8.0",
+    "electron": "^36.9.5"
+  },
+  "dependencies": {
+    "@xmldom/xmldom": "^0.8.11",
+    "electron-squirrel-startup": "^1.0.1",
+    "serialport": "^11.0.1"
+  }
+}

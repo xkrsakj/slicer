@@ -225,7 +225,7 @@ var Slicer = {
 	checkConnection: function() {
 		SerialPort.list().then((devices) => {
 			for (let i = 0; i < devices.length; i++) {	
-				if (devices[i].vendorId == this.vendorId && devices[i].productId == this.productId) {
+				if (devices[i].vendorId.toLowerCase() == this.vendorId && devices[i].productId == this.productId) {
 					this.devicePath = devices[i].path;
 
 					this.wasConnected = this.isConnected;
@@ -291,6 +291,7 @@ var Slicer = {
 
 	draw: async function() {
 		this.gcode = SvgToGcodeConvertor.convert(this.pathData, this.settings);
+		fs.writeFileSync('test.txt', this.gcode);
 
 		var gcodeArr = this.gcode.split("\n");
 

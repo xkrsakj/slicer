@@ -162,8 +162,14 @@ var SvgToGcodeConvertor = {
 
 		for (let i = 0; i < res; i++) {
 			var t = i * (1 / res);
-			var nextX = (1 - t) ** 3 * x0 + 3 * (1 - t) ** 2 * t * x1 + 3 * (1 - t) * t ** 2 * x2 + t ** 3 * x3;
-			var nextY = (1 - t) ** 3 * y0 + 3 * (1 - t) ** 2 * t * y1 + 3 * (1 - t) * t ** 2 * y2 + t ** 3 * y3;
+			var nextX = (1 - t) ** 3 * x0 +
+						3 * (1 - t) ** 2 * t * x1 +
+						3 * (1 - t) * t ** 2 * x2 +
+						t ** 3 * x3;
+			var nextY = (1 - t) ** 3 * y0 +
+						3 * (1 - t) ** 2 * t * y1 +
+						3 * (1 - t) * t ** 2 * y2 +
+						t ** 3 * y3;
 
 			totalD += Math.sqrt(Math.pow(x - nextX, 2) + Math.pow(y - nextY, 2));
 
@@ -185,7 +191,9 @@ var SvgToGcodeConvertor = {
 		var da = Math.pow(this.settings.vMax, 2) / (2 * this.settings.acceleration);
 
 		if (d > 2 * da) {
-			return this.settings.vMax / this.settings.acceleration + (d - 2 * da) / this.settings.vMax + this.settings.vMax / this.settings.acceleration;
+			return this.settings.vMax / this.settings.acceleration +
+				   (d - 2 * da) / this.settings.vMax +
+				   this.settings.vMax / this.settings.acceleration;
 		}
 
 		return 2 * Math.sqrt(d / this.settings.acceleration);

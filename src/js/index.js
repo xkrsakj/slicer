@@ -223,6 +223,10 @@ var MainPanel = {
     updateRemainingTime: function() {
         if (!this.isPaused) {
             this.remainingTime -= (new Date() - this.prevDate) / 1000;
+            
+            if (this.remainingTime < 0) {
+                this.remainingTime = 0
+            }
 
             this.elements.remainingTime.textContent = parseInt(this.remainingTime/60);
 

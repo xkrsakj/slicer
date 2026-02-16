@@ -224,8 +224,8 @@ var Slicer = {
 
 	checkConnection: function() {
 		SerialPort.list().then((devices) => {
-			for (let i = 0; i < devices.length; i++) {	
-				if (devices[i].vendorId.toLowerCase() == this.vendorId && devices[i].productId == this.productId) {
+			for (let i = 0; i < devices.length; i++) {					
+				if (devices[i].vendorId && devices[i].productId && devices[i].vendorId.toLowerCase() == this.vendorId && devices[i].productId == this.productId) {
 					this.devicePath = devices[i].path;
 
 					this.wasConnected = this.isConnected;

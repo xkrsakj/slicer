@@ -291,7 +291,6 @@ var Slicer = {
 
 	draw: async function() {
 		this.gcode = SvgToGcodeConvertor.convert(this.pathData, this.settings);
-		fs.writeFileSync('test.txt', this.gcode);
 
 		var gcodeArr = this.gcode.split("\n");
 

@@ -1,7 +1,8 @@
 {
   "name": "pilak-slicer",
+  "productName": "Slicer",
   "version": "1.0.0",
-  "description": "Official light-weight slicer for kreslic.",
+  "description": "Proof-of-concept light-weight slicer for our CNC Pen Ploter.",
   "main": "src/js/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
